@@ -17,24 +17,11 @@ const UserOnboardingForm = ({ errors, touched, values }) => {
         <Field type='text' name='password' placeholder='Password' />
         {touched.password && errors.password && <p className>{errors.password}</p>}
 
-
-
-
-        {/* <Field component='select' className='food-select' name='food'>
-        <option>Please Chose an Option</option>
-
-          <option value='herbivore'>herbivore</option>
-          <option value='carnivore'>carnivore</option>
-          <option value='omnivore'>omnivore</option>
-
-        </Field>
- */}
         <label>
           <Field 
           type='checkbox' 
           name='termsOfService' 
-          checked={values.vaccionantions} />
-          <span className='checkmark'></span>
+          checked={values.termsOfService} />
         </label>
           Terms of Service
         <button type='submit'> Submit </button>
@@ -58,12 +45,12 @@ const FormikUserOnboardingForm = withFormik({
     email: Yup.string().required(),
     password: Yup.string().required(),
   }),
-//   handleSubmit(values){
-//     axios
-//     .post('https://reqres.in/api/users/ ')
-//     .then(res => console.log(res))
-//     .catch(err => console.log(err.message));
-//   }
+  handleSubmit(values){
+    axios
+    .post('https://reqres.in/api/users/ ')
+    .then(res => console.log('res', res))
+    .catch(err => console.log(err.message));
+  }
 
 })(UserOnboardingForm); //currying funtions in JavaScript
 
