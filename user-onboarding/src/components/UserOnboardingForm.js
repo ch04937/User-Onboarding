@@ -9,12 +9,14 @@ const UserOnboardingForm = ({ errors, touched, values }) => {
     <div>
       <Form >
         <Field type='text' name='name' placeholder='Name' />
-        {touched.species && errors.species && <p className>{errors.species}</p>}
+        {touched.name && errors.name && <p className>{errors.name}</p>}
 
         <Field type='text' name='email' placeholder='Email' />
-        {touched.size && errors.size && <p className>{errors.size}</p>}
+        {touched.email && errors.email && <p className>{errors.email}</p>}
 
         <Field type='text' name='password' placeholder='Password' />
+        {touched.password && errors.password && <p className>{errors.password}</p>}
+
 
 
 
@@ -35,10 +37,6 @@ const UserOnboardingForm = ({ errors, touched, values }) => {
           <span className='checkmark'></span>
         </label>
           Terms of Service
-
-        <Field type='text' name='notes' placeholder='Notes' />
-        {touched.notes && errors.notes && <p className>{errors.notes}</p>}
-
         <button type='submit'> Submit </button>
       </Form>
     </div>
@@ -56,9 +54,9 @@ const FormikUserOnboardingForm = withFormik({
     }
   },
   validationSchema: Yup.object().shape({
-    species: Yup.string().required(),
-    size: Yup.string().required(),
-    notes: Yup.string()
+    name: Yup.string().required(),
+    email: Yup.string().required(),
+    password: Yup.string().required(),
   }),
 //   handleSubmit(values){
 //     axios
