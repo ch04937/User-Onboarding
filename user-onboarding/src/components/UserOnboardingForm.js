@@ -31,6 +31,7 @@ const UserOnboardingForm = ({ errors, touched, values, status }) => {
           type='checkbox' 
           name='termsOfService' 
           checked={values.termsOfService} />
+          {touched.termsOfService && errors.termsOfService && <p className>{errors.termsOfService}</p>}
 
         </label>
           Terms of Service
@@ -57,8 +58,9 @@ const FormikUserOnboardingForm = withFormik({
     name: Yup.string().required(),
     email: Yup.string().required(),
     password: Yup.string().required(),
-    termsOfService: Yup.string().required(),
+    termsOfService: Yup.boolean().oneOf([true],'must accept terms and conditions '), 
   }),
+
   handleSubmit(values, { setStatus }){
     axios
     .post('https://reqres.in/api/users/ ', values)
